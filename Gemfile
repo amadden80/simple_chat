@@ -11,6 +11,12 @@ gem 'haml'
 
 gem 'pusher'
 
+# Image upload gems
+gem 'carrierwave'
+gem 'fog'
+gem 'rmagick'
+gem 'remotipart'
+
 group :production do
   #REQUIRED for Rails 4.0 on Heroku!
   gem 'rails_12factor'
