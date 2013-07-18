@@ -1,3 +1,5 @@
+var STARTING_CHANNEL = 'chatroom';
+
 var pusher;
 var channel;
 
@@ -7,6 +9,18 @@ function receive_chat(data){
   var new_chat = $('<p>')
   new_chat.text(data)
   new_chat.appendTo(chats)
+}
+
+function switch_channel(e){
+  var new_channel = $(this).val();
+  var new_channel_title = $(this).children(":selected").text();
+  unsubscribe_all();
+  pusher.subscribe(new_channel);
+  listen_for_messages(new_channel);
+  var chat_alert = $('<p>');
+  chat_alert.addClass('chat-alert');
+  chat_alert.text('You are now subscribed to the ' + new_channel_title + ' channel');
+  $('#chats').append(chat_alert);
 }
 
 // Loops through all of the subscribed channels and
@@ -19,6 +33,11 @@ function unsubscribe_all(){
   return pusher.channels.channels;
 }
 
+function listen_for_messages(channel){
+  listening_channel = pusher.channels.channels[channel];
+  listening_channel.bind('message', receive_chat)
+}
+
 $(function(){
   /*
   * Note that we have moved the pusher creation into the application.html page body.
@@ -26,8 +45,27 @@ $(function(){
   * This is a Heroku-specific problem, ideally we'll figure out how to fix it and get our
   * pusher initialization back into a js file.
   */
-  pusher.subscribe('chatroom');
-  channel = pusher.channels.channels['chatroom'];
-  channel.bind( 'message', receive_chat );
+  pusher.subscribe(STARTING_CHANNEL);
+  listen_for_messages(STARTING_CHANNEL);
+
+  $('#channel').on('change', switch_channel)
 
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
