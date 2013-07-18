@@ -9,6 +9,11 @@ gem 'pg'
 gem 'jquery-rails'
 gem 'haml'
 
+gem 'bcrypt-ruby'
+
+#Temporary change to attr_accessible
+gem 'protected_attributes'
+
 gem 'pusher'
 
 # Image upload gems
