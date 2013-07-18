@@ -9,7 +9,7 @@ gem 'pg'
 gem 'jquery-rails'
 gem 'haml'
 
-gem 'bcrypt-ruby'
+gem 'bcrypt-ruby', '3.0.0'
 
 #Temporary change to attr_accessible
 gem 'protected_attributes'
