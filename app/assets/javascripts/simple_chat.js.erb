@@ -6,9 +6,18 @@ var channel;
 function receive_chat(data){
   // console.log(data);
   var chats = $('#chats')
+
+  var new_div = $('<div>');
+
+  var new_chat_avatar = $('<img>');
+  new_chat_avatar.attr('src', data['avatar']);
+  new_chat_avatar.appendTo(new_div);
+
   var new_chat = $('<p>')
-  new_chat.text(data)
-  new_chat.appendTo(chats)
+  new_chat.text(data['username'] + ': ' + data['chat_text']);
+  new_chat.appendTo(new_div);
+
+  new_div.appendTo(chats);
 }
 
 function switch_channel(e){
