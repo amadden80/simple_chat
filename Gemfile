@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '4.0.0'
 
-gem 'nokogiri'
+gem 'nokogiri', '1.5.0'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml'
@@ -12,13 +12,13 @@ gem 'haml'
 gem 'bcrypt-ruby', '3.0.0'
 
 #Temporary change to attr_accessible
-gem 'protected_attributes'
+# gem 'protected_attributes'
 
 gem 'pusher'
 
 # Image upload gems
 gem 'carrierwave'
-gem 'fog'
+gem 'fog', '1.12'
 gem 'rmagick'
 gem 'remotipart'
 
