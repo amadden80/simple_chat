@@ -7,7 +7,16 @@ function receive_chat(data){
   var new_chat = $('<p>')
   new_chat.text(data)
   new_chat.appendTo(chats)
+}
 
+// Loops through all of the subscribed channels and
+// unsubscribes from them
+function unsubscribe_all(){
+  var channels = Object.keys(pusher.channels.channels);
+  $.each(channels, function(i, channel){
+    pusher.unsubscribe(channel);
+  });
+  return pusher.channels.channels;
 }
 
 $(function(){

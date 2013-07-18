@@ -32,3 +32,24 @@ SimpleChatFour::Application.configure do
   Pusher.key = ENV['PUSHER_KEY']
   Pusher.secret = ENV['PUSHER_SECRET']
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
