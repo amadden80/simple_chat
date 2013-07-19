@@ -3,6 +3,8 @@ var STARTING_CHANNEL = 'chatroom';
 var pusher;
 var channel;
 
+//Called when a channel that is listening for 'message' events receives a message event. Adds a chat message to the
+//page with the username, avatar and text for that chat.
 function receive_chat(data){
   // console.log(data);
   var chats = $('#chats')
@@ -20,6 +22,8 @@ function receive_chat(data){
   new_div.appendTo(chats);
 }
 
+// Called when a new channel is selected from the drop-down (select element). Unsubscribes from
+// all other channels and subscribes to the selected one, generating an alert in the chat.
 function switch_channel(e){
   var new_channel = $(this).val();
   var new_channel_title = $(this).children(":selected").text();
@@ -42,6 +46,7 @@ function unsubscribe_all(){
   return pusher.channels.channels;
 }
 
+//Binds the receive_chat event to the channel passed as parameter
 function listen_for_messages(channel){
   listening_channel = pusher.channels.channels[channel];
   listening_channel.bind('message', receive_chat)
