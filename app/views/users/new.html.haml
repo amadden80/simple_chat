@@ -1,0 +1,11 @@
+/ Notice that this form should NOT be remote: true, since I want it to return HTML and redirect me
+= form_for @user, html: {multipart: true} do |f|
+  = f.label :username
+  = f.text_field :username, placeholder: 'e.g. sk8rbro148'
+  = f.label :image
+  = f.text_field :remote_image_url, placeholder: 'Enter a web image URL'
+  = f.label :password
+  = f.password_field :password
+  = f.label :password_confirmation
+  = f.password_field :password_confirmation
+  = f.submit

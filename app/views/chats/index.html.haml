@@ -7,8 +7,11 @@
 
   #chats
   = form_tag(send_chat_path, id: 'chat-form', remote: true) do
+    / This select tag is hard-coded to have four available channels. Really, though, we should have made a Channel model and used the new Rails 4 collection_select helper. Try upgrading it!
     = select_tag 'channel', options_for_select([['Chatroom', 'chatroom'], ['Sports', 'sports'], ['Today with Tanay', 'todaywithtanay'], ['Studio 2','studio2']])
     = text_field_tag 'chat_input'
     = submit_tag 'Chat!'
 - else
   = link_to 'Please log in', sessions_new_path
+  OR
+  = link_to 'Sign Up', new_user_path
